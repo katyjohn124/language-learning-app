@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: white;
+    padding: 0.5em;
+}
+
+.logo {
+    flex: 1;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    flex: 3;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+}
+
+.nav a {
+    text-decoration: none;
+    color: black;
+    padding: 0.5em;
+    white-space: nowrap;
+
+}
+
+.nav a.active {
+    border-bottom: 2px solid yellow;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .header {
+        padding: 0.5em;
+    }
+
+    .logo {
+        font-size: 1.2em;
+
+    }
+
+    .nav a {
+        padding: 0.3em;
+        margin: 0.2em;
+        font-size: 0.9em;
+
+    }
+}
