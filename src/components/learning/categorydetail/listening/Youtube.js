@@ -1,8 +1,7 @@
-import React from 'react';
+import React from 'react'
 
 const Youtube = ({ videoId }) => {
-    const embedUrl = `https://www.youtube.com`;
-
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`
     return (
         <iframe
             width="560"
@@ -13,7 +12,7 @@ const Youtube = ({ videoId }) => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
         ></iframe>
-    );
-};
+    )
+}
 
-export default Youtube;
+export default Youtube

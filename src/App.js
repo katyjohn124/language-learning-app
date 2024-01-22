@@ -8,6 +8,9 @@ import Register from './components/auth/Register'
 import UserProfiles from './components/user/UserProfiles';
 import LearningCategory from './components/learning/LearningCategory';
 import DiscussionBoard from './components/community/DiscussionBoard';
+import Listening from './components/learning/categorydetail/listening/Listening'
+import Reading from './components/learning/categorydetail/reading/Reading';
+
 
 
 export default function App() {
@@ -20,6 +23,8 @@ export default function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/userprofiles" element={<UserProfiles />} />
         <Route path="/learningcategory" element={<LearningCategory />} />
+        <Route path="/learningcategory/listening" element={<Listening />} />
+        <Route path="/learningcategory/reading" element={<Reading />} />
         <Route path="/discussionboard" element={<DiscussionBoard />} />
       </Routes>
       <Footer />

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 //模拟数据
 const categories = [
-    { name: '听力', path: '/learningcategory/listening/Listening' },
-    { name: '阅读', path: '/learning/listening/' },
+    { name: '听力', path: '/learningcategory/listening' },
+    { name: '阅读', path: '/learningcategory/reading' },
     { name: '口语', path: '/learningcategory/speaking' },
     { name: '写作', path: '/learningcategory/writing' }
 ]
