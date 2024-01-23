@@ -10,6 +10,7 @@ import LearningCategory from './components/learning/LearningCategory';
 import DiscussionBoard from './components/community/DiscussionBoard';
 import Listening from './components/learning/categorydetail/listening/Listening'
 import Reading from './components/learning/categorydetail/reading/Reading';
+import Speaking from './components/learning/categorydetail/speaking/Speaking';
 
 
 
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/learningcategory" element={<LearningCategory />} />
         <Route path="/learningcategory/listening" element={<Listening />} />
         <Route path="/learningcategory/reading" element={<Reading />} />
+        <Route path="/learningcategory/speaking" element={<Speaking />} />
         <Route path="/discussionboard" element={<DiscussionBoard />} />
       </Routes>
       <Footer />

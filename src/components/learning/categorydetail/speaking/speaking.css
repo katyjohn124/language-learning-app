@@ -1,0 +1,51 @@
+/* 主容器样式 */
+.speaking-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+}
+
+/* 子容器样式 */
+.speaking-container>div {
+    margin-bottom: 20px;
+}
+
+/* 视频样式 */
+.shadowing-videos .video,
+.tutorial-platform .platform,
+.aitools .tool {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* 视频 iframe 样式 */
+.shadowing-videos iframe {
+    width: 100%;
+    height: 315px;
+    /* 可以根据实际情况调整 */
+    border: none;
+}
+
+/* 标题样式 */
+.shadowing-videos .video>p,
+.tutorial-platform .platform>p,
+.aitools .tool>p {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .speaking-container {
+        flex-direction: column;
+    }
+
+    .shadowing-videos iframe {
+        height: 215px;
+    }
+}
