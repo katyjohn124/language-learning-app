@@ -7,7 +7,7 @@ const app = express()
 
 const userRoutes = require('./src/routes/authRoutes')
 
-qpp.use(cors())
+app.use(cors())
 //用于解析json请求体
 app.use(express.json())
 // 将用户相关的路由挂载到/api路径下
@@ -25,7 +25,7 @@ app.post('/register', async (req, res) => {
         users.push(user);
         res.status(201).send('用户注册成功！')
     } catch (error) {
-        res.status(500).send('用户注册失败：', error.message)
+        res.status(500).send('用户注册失败：' + error.message)
     }
 })
 //登录
@@ -42,7 +42,7 @@ app.post('/login', async (req, res) => {
             res.send('Not Allowed');
         }
     } catch (error) {
-        res.status(500).send('Error logging in', error.message);
+        res.status(500).send('Error logging in' + error.message);
     }
 })
 

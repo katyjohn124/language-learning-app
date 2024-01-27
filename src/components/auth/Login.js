@@ -31,7 +31,7 @@ function Login() {
                     密码:
                     <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
                 </label>
-                <button type="submit">注册</button>
+                <button type="submit">登录</button>
             </form>
             {message && <p>{message}</p>}
         </div>
