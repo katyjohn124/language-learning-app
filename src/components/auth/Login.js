@@ -9,15 +9,19 @@ function Login() {
     async function handleSubmit(event) {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:3001/login', { username, password });
-            //本地存储存token
-            localStorage.setItem('token', response.data.accessToken);
+            const response = await axios.post('http://localhost:3001/api/login', { username, password });
+            console.log(response.data);  // 确保这里正确打印响应数据
+
+            // 将 'accessToken' 更改为 'token'
+            localStorage.setItem('token', response.data.token);  // 更正后的代码
             setMessage('Login successful');
-            // Redirect to a new page or reset the state as needed
+            // 在这里可以添加重定向或其他逻辑
         } catch (error) {
-            setMessage('Login failed', error.message);
+            console.error('Login error:', error);  // 使用 console.error 更合适
+            setMessage('Login failed');
         }
     }
+
 
     return (
         <div>
