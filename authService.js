@@ -7,11 +7,14 @@ const app = express()
 
 const userRoutes = require('./src/routes/authRoutes')
 
+const communityRoutes = require('./src/routes/communityRoutes');
+
 app.use(cors())
 //用于解析json请求体
 app.use(express.json())
 // 将用户相关的路由挂载到/api路径下
 app.use('/api', userRoutes);
+app.use('/api/community', communityRoutes);
 
 let users = [];
 //注册

@@ -1,0 +1,110 @@
+/* Discussion Board Container */
+.discussion-board {
+    background-color: #f0f2f5;
+    /* Light grey background for the entire discussion board */
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    padding: 20px;
+    /* Space inside the container */
+    max-width: 800px;
+    /* Maximum width with center alignment */
+    margin: 20px auto;
+    /* Center the discussion board */
+}
+
+/* Discussion Title */
+.discussion-title {
+    font-size: 24px;
+    /* Larger font for the title */
+    color: #333;
+    /* Dark grey color for contrast */
+    margin-bottom: 20px;
+    /* Space between title and form */
+}
+
+/* Post Form Styles */
+.post-form {
+    background-color: #fff;
+    /* White background for the form */
+    padding: 15px;
+    /* Padding inside the form */
+    border-radius: 8px;
+    /* Rounded corners for the form */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+    margin-bottom: 20px;
+    /* Space between form and post list */
+}
+
+.post-form input,
+.post-form textarea {
+    width: 100%;
+    /* Full width inputs */
+    padding: 10px;
+    /* Padding inside inputs */
+    margin-bottom: 10px;
+    /* Space between form elements */
+    border: 1px solid #ccc;
+    /* Subtle border */
+    border-radius: 4px;
+    /* Slightly rounded corners for inputs */
+}
+
+.post-form button {
+    background-color: #007bff;
+    /* Bootstrap primary color for the button */
+    color: #fff;
+    /* White text for the button */
+    padding: 10px 15px;
+    /* Padding inside the button */
+    border: none;
+    /* Remove border */
+    border-radius: 4px;
+    /* Rounded corners for the button */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+}
+
+/* Post List Styles */
+.post-list {
+    list-style: none;
+    /* Remove default list style */
+    padding: 0;
+    /* Remove default padding */
+}
+
+.post-card {
+    background-color: #fff;
+    /* White background for each post */
+    padding: 15px;
+    /* Padding inside each post */
+    margin-bottom: 10px;
+    /* Space between posts */
+    border-radius: 8px;
+    /* Rounded corners for posts */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow for depth */
+}
+
+.post-title {
+    font-size: 18px;
+    /* Larger font for post titles */
+    color: #333;
+    /* Dark grey for title text */
+    margin-bottom: 5px;
+    /* Space between title and content */
+}
+
+.post-content {
+    font-size: 14px;
+    /* Standard font size for content */
+    color: #666;
+    /* Lighter grey for content text */
+}
+
+.sort-dropdown {
+    margin-bottom: 20px;
+    /* Space above the post list */
+}
