@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const pool = require('../../db');
 const router = express.Router();
-// 注册路由
+
 // 注册路由
 router.post('/register', async (req, res) => {
     try {

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -15,7 +17,9 @@ function Login() {
             // 将 'accessToken' 更改为 'token'
             localStorage.setItem('token', response.data.token);  // 更正后的代码
             setMessage('Login successful');
-            // 在这里可以添加重定向或其他逻辑
+
+            // 登录成功后，跳转到个人主页
+            navigate('/userprofiles');
         } catch (error) {
             console.error('Login error:', error);  // 使用 console.error 更合适
             setMessage('Login failed');

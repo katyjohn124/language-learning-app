@@ -1,0 +1,96 @@
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    border: 1px solid #ccc;
+    background-color: #000;
+    color: #fff;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.welcome-message {
+    font-size: 1rem;
+}
+
+.chat-body {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    max-width: 60%;
+}
+
+.message.ai {
+    background-color: #555;
+    align-self: flex-start;
+}
+
+.message.user {
+    background-color: #007bff;
+    align-self: flex-end;
+    color: #fff;
+}
+
+.chat-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #333;
+}
+
+.message-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background-color: #222;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.quick-suggestions {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: #1e1e1e;
+    /* Adjust the color to match your design */
+}
+
+.suggestion-button {
+    padding: 5px 15px;
+    margin: 0 5px;
+    background-color: #333;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.suggestion-button:hover {
+    background-color: #555;
+}
