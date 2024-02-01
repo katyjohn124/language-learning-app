@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 // 将用户相关的路由挂载到/api路径下
 app.use('/api/community', communityRoutes);
-app.use('/api/chatgpt', chatgptRoutes);
+app.use('/api/openai', chatgptRoutes);
 
 
 const PORT = process.env.PORT || 3001;
