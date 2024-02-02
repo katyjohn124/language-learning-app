@@ -5,7 +5,7 @@ const app = express();
 
 const authRoutes = require('./src/routes/authRoutes');
 const communityRoutes = require('./src/routes/communityRoutes');
-const chatgptRoutes = require('./src/routes/chatgptRoutes');
+const geminiRoutes = require('./src/routes/geminiRoutes');
 
 app.use(cors());
 app.use(express.json());
@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 // 将用户相关的路由挂载到/api路径下
 app.use('/api/community', communityRoutes);
-app.use('/api/openai', chatgptRoutes);
+app.use('/api/gemini', geminiRoutes);
 
 
 const PORT = process.env.PORT || 3001;

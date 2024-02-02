@@ -25,7 +25,7 @@ const Header = () => {
                     to="/userprofiles"
                     className={({ isActive }) => isActive ? 'active' : undefined}
                 >
-                    个人主页
+                    AI助手
                 </NavLink>
             </nav>
 
