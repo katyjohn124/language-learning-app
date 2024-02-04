@@ -1,0 +1,119 @@
+/* Modal.module.css */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    max-width: 500px;
+    color: black;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.label {
+    margin-bottom: 10px;
+}
+
+.submitButton {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    background-color: #45a049;
+}
+
+.closeButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.closeButton:hover {
+    background-color: #e53935;
+}
+
+
+.paymentModalContent {
+    text-align: center;
+    /* Center text and content */
+    padding: 20px;
+    /* Add some padding around the content */
+}
+
+.paymentImage {
+    max-width: 80%;
+    /* Adjust the width of the image to be 80% of its container */
+    max-height: 300px;
+    /* Adjust the height of the image */
+    margin-top: 20px;
+    /* Add some space above the image */
+    margin-bottom: 20px;
+    /* Add some space below the image */
+}
+
+.paymentText {
+    font-size: 1.2em;
+    /* Increase the font size */
+    margin-bottom: 20px;
+    /* Add some space below the text */
+}
+
+.closeButton {
+    cursor: pointer;
+    /* Change mouse cursor on hover */
+    padding: 10px 20px;
+    /* Add padding to the button */
+    font-size: 1em;
+    /* Adjust font size if needed */
+    margin-top: 20px;
+    /* Add some space above the button */
+    background-color: #4caf50;
+    /* Add a background color to the button */
+    color: white;
+    /* Change the text color */
+    border: none;
+    /* Remove border */
+    border-radius: 5px;
+    /* Round the corners */
+}
+
+.closeButton:hover {
+    background-color: #45a049;
+    /* Darken button on hover */
+}

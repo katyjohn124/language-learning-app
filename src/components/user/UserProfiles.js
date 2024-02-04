@@ -1,281 +1,275 @@
-// 1
+import React, { useEffect, useRef, useState } from 'react'
+import gptLogo from '../../assets/chatgpt.svg'
+import styles from './UserProfiles.module.css'
+import addBtn from '../../assets/add-30.png'
+import msgIcon from '../../assets/message.svg'
+import home from '../../assets/home.svg'
+import saved from '../../assets/bookmark.svg'
+import rocket from '../../assets/rocket.svg'
+import sendBtn from '../../assets/send.svg'
+import userIcon from '../../assets/user-icon.png'
+import gptImgLogo from '../../assets/chatgptLogo.svg'
+import { useNavigate } from 'react-router-dom';
+import modalStyles from './Modal.module.css';
+import WeChatPay from '../../assets/17b32914e493fa51ee2478be8270598.jpg'
 
-// import React, { useState, useEffect, useRef } from 'react';
-// import './UserProfiles.css';
-
-
-
-
-// const UserProfiles = ({ username }) => {
-//     const [question, setQuestion] = useState('');
-//     const [conversation, setConversation] = useState([]);
-//     const endOfMessagesRef = useRef(null);
-//     const [isLoading, setIsLoading] = useState(false);
-
-
-//     const quickSuggestions = [
-//         '可理解性输入假说是什么?',
-//         '输入多少个小时才能达到目标语言的b1——b2水平?',
-//         '口语怎么练习，推荐哪些平台?',
-//         'Feedback(我需要大家的反馈来完善这个网站...)'
-//     ];
-
-//     const handleNewQuestion = async (questionText) => {
-//         if (!questionText.trim()) return;
-//         // 开始请求时设置加载状态为 true
-//         setIsLoading(true);
-//         const newMessage = { type: 'user', text: questionText };
-//         setConversation([...conversation, newMessage]);
-
-//         try {
-
-//             const response = await fetch('http://localhost:3001/api/generate-text', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 body: JSON.stringify({ prompt: questionText })
-//             });
-
-//             if (!response.ok) {
-//                 throw new Error(`HTTP error! status: ${response.status}`);
-//             }
-
-//             const data = await response.json();
-//             const aiMessage = { type: 'ai', text: data.text };
-//             setConversation([...conversation, aiMessage]);
-//         } catch (error) {
-//             console.error('Fetch error:', error);
-//             const errorMessage = { type: 'ai', text: 'Sorry, I am unable to fetch the answer right now.' };
-//             setConversation([...conversation, errorMessage]);
-//         } finally {
-//             // 请求完成后设置加载状态为 false
-//             setIsLoading(false);
-//         }
-//     };
-
-
-//     const addQuickSuggestion = (suggestion) => {
-//         setQuestion(suggestion);
-//     };
-
-
-//     useEffect(() => {
-//         endOfMessagesRef.current?.scrollIntoView({ behavior: 'smooth' });
-//     }, [conversation]);
-
-//     return (
-//         <div className="chat-container">
-//             <div className="chat-header">
-//                 <span className="logo">Fluency AI</span>
-//                 <span className="welcome-message">Hi ~ {username}</span>
-//             </div>
-//             <div className="quick-suggestions">
-//                 {quickSuggestions.map((suggestion, index) => (
-//                     <button
-//                         key={index}
-//                         className="suggestion-button"
-//                         onClick={() => addQuickSuggestion(suggestion)}
-//                         aria-label={`Use quick suggestion: ${suggestion}`}
-//                     >
-//                         {suggestion}
-//                     </button>
-//                 ))}
-//             </div>
-//             <div className="chat-body">
-//                 {conversation.map((message, index) => (
-//                     <div key={index} className={`message ${message.type}`} tabIndex={0}>
-//                         {message.text}
-//                     </div>
-//                 ))}
-//                 <div ref={endOfMessagesRef}></div>
-//             </div>
-//             <div className="chat-footer">
-//                 <input
-//                     type="text"
-//                     className="message-input"
-//                     placeholder="Type your message..."
-//                     value={question}
-//                     onChange={(e) => setQuestion(e.target.value)}
-//                     onKeyPress={(e) => e.key === 'Enter' && handleNewQuestion(question)}
-//                     aria-label="Type your message here"
-//                 />
-//                 <button className="send-button" onClick={() => handleNewQuestion(question)} aria-label="Send message">
-//                     {isLoading ? 'Loading...' : 'Send'}
-//                 </button>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default UserProfiles;
-
-
-
-
-// 2
-
-import { useEffect, useRef, useState } from "react";
-import dayjs from "dayjs";
-import { GoogleGenerativeAI } from "@google/generative-ai";
-import MDEditor from "@uiw/react-md-editor";
-import InputBox from "./InputBox";
-
-
-
-
-import "./UserProfiles.css";
-// import logo from "../assets/img/gemini-small.png";
-
-
-const API_KEY = "AIzaSyBMTnL6NavVdndNYxAojbwNnTaM9PFnGR8";
-const genAI = new GoogleGenerativeAI(API_KEY);
-
-const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-
-const Header = () => {
-    return (
-        <div className="header">
-            <h1 id="chat-header">
-
-                <b style={{ marginLeft: 5 }}>Fluency AI</b>
-            </h1>
-            <small>Hi~</small>
-        </div>
-    );
-};
 
 const UserProfiles = () => {
-    const chatContainerRef = useRef(null);
-    const [loading, setLoading] = useState(false);
-    const [messages, setMessages] = useState([]);
+    const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+
+    const [isFeedbackModalOpen, setIsFeedbackModalOpen] = useState(false);
+    const [feedback, setFeedback] = useState('');
+    const [includeEmail, setIncludeEmail] = useState(false);
+
+
+    const openFeedbackModal = () => setIsFeedbackModalOpen(true);
+    const closeFeedbackModal = () => setIsFeedbackModalOpen(false);
+
+    const openPaymentModal = () => setIsPaymentModalOpen(true);
+    const closePaymentModal = () => setIsPaymentModalOpen(false);
+
+
+    const navigate = useNavigate();
+    const msgEnd = useRef(null)
+    const [input, setInput] = useState("")
+    const [messages, setMessages] = useState([
+        {
+            text: "Hi,I am ChatGPT,How can I help you?",
+            isBot: true,
+        }
+    ])
+
+    const handleHomeClick = () => {
+        navigate('/discussionboard');
+    }
 
     useEffect(() => {
-        // Auto-scroll to the bottom of the chat container when new messages are added
-        chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
-    }, [messages]);
+        msgEnd.current.scrollIntoView()
+    }, [messages])
 
-    const sendMessage = async (inputText) => {
-        if (!inputText) {
-            return;
+    const handleSend = async () => {
+        if (input.trim() === '') {
+            return; // 如果输入为空，则不发送请求
         }
 
-        // Update messages with the user message
-        setMessages((prevMessages) => [
-            ...prevMessages,
-            { text: inputText, sender: "user", timestamp: new Date() },
-        ]);
-
-        setLoading(true);
+        const newMessages = [...messages, { text: input, isBot: false }];
+        setMessages(newMessages);
+        setInput(''); // 清空输入框
 
         try {
-            const result = await model.generateContent(inputText);
-            const text = result.response.text();
-
-            // Check if the response is code before updating messages
-            const isCode = text.includes("```");
-
-            // Update messages with the AI response
-            setMessages((prevMessages) => [
-                ...prevMessages,
-                {
-                    text: text,
-                    sender: "ai",
-                    timestamp: new Date(),
-                    isCode, // Add a flag to identify code snippets
+            const response = await fetch('http://localhost:3001/api/openai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
                 },
-            ]);
+                body: JSON.stringify({ messages: [{ role: "user", content: input }] }),
+            });
 
-            setLoading(false);
+            // 首先检查响应是否OK
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // 获取响应文本
+            const responseText = await response.text();
+            console.log('Received response text:', responseText);
+
+            if (responseText) {
+                // 如果响应文本不为空，则尝试解析为JSON
+                const data = JSON.parse(responseText);
+                setMessages([...newMessages, { text: data.choices[0].message.content, isBot: true }]);
+            } else {
+                // 如果响应文本为空，则抛出错误
+                console.error('Response text is empty.');
+            }
         } catch (error) {
-            setLoading(false);
-            console.error("generateContent error: ", error);
+            console.error('Error in handleSend:', error);
+            // 处理错误，可能是网络问题或JSON解析问题
+            // 这里可以根据实际需求显示错误消息
         }
     };
 
+    const handleEnter = async (e) => {
+        if (e.key === 'Enter') await handleSend()
+
+
+    }
+
+    // const handleQuery = async (e) => {
+    //     const text = e.target.value;
+    //     setMessages([
+    //         ...messages,
+    //         {
+    //             text,
+    //             isBot: false
+    //         },
+    //     ])
+    //     const res = await sendMsgToOpenAI(text)
+    //     console.log(res)
+    //     setMessages([
+    //         ...messages,
+    //         {
+    //             text,
+    //             isBot: false
+    //         },
+    //         {
+    //             text: res,
+    //             isBot: true
+    //         },
+    //     ])
+    // }
+
+    const handlePresetQuery = async (query) => {
+        // 发送请求到后端，并将query作为消息内容
+        const response = await fetch('http://localhost:3001/api/openai', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: [{ role: "user", content: query }] }),
+        });
+        const data = await response.json();
+        if (data.choices) {
+            // 将回复添加到messages数组中
+            setMessages(messages => [...messages, { text: query, isBot: false }, { text: data.choices[0].message.content, isBot: true }]);
+        }
+    };
+
+
+    const submitFeedback = async (e) => {
+        e.preventDefault();
+
+        // Send the feedback to your backend server
+        try {
+            const response = await fetch('http://localhost:3001/api/feedback', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    feedback,
+                    includeEmail,
+                    userEmail: includeEmail ? 'nongjuynu0425@gmail.com' : undefined,
+                }),
+            });
+
+            if (response.ok) {
+                // Handle successful feedback submission
+                closeFeedbackModal();
+                // Reset the feedback form
+                setFeedback('');
+                setIncludeEmail(false);
+            } else {
+                // Handle server errors
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Feedback submission error:', error);
+        }
+    };
+
+
     return (
-        // <div className={`chat-window`}>
-        //     <Header />
-        //     <div className="chat-container" ref={chatContainerRef}>
-        //         {messages.map((message, index) => (
-        //             <div
-        //                 key={index}
-        //                 className={`message ${message.sender === "user" ? "user" : "ai"}`}
-        //             >
-        //                 {message.isCode ? (
-        //                     <MDEditor.Markdown
-        //                         source={message.text}
-        //                         style={{ whiteSpace: "pre-wrap" }}
-        //                     />
-        //                 ) : (
-        //                     <>
-        //                         <p className="message-text">{message.text}</p>
-        //                         <span
-        //                             className={`time ${message.sender === "user" ? "user" : "ai"
-        //                                 }`}
-        //                         >
-        //                             {message.timestamp
-        //                                 ? dayjs(message.timestamp).format("DD.MM.YYYY HH:mm:ss")
-        //                                 : ""}
-        //                         </span>
-        //                     </>
-        //                 )}
-        //             </div>
-        //         ))}
-        //     </div>
-        //     <InputBox sendMessage={sendMessage} loading={loading} />
-        // </div>
-        <div className="gemini-pro-container">
-            <aside className="chat-history">
-                <div className="history-entry selected">会话 #1</div>
-                <div className="history-entry">会话 #2</div>
-
-            </aside>
-
-            <section className="chat-window">
-                <div className="chat-header">
-                    <span className="header-title">Gemini Pro</span>
-                    <button className="toggle-history-button">+</button>
-
+        <div className={styles.App}>
+            <div className={styles.sideBar}>
+                <div className={styles.upperSide}>
+                    <div className={`${styles.upperSideTop} ${styles.brandContainer}`}>
+                        <img src={gptLogo} alt='Logo' className={styles.logo} />
+                        <span className={styles.brand}>ChatGPT</span>
+                    </div>
+                    <button className={styles.midBtn} onClick={() => { window.location.reload() }}>
+                        <img src={addBtn} alt='new chat' className={styles.addBtn} />
+                        New Chat
+                    </button>
+                    <div className={styles.upperSideBottom}>
+                        <button className={styles.query} onClick={() => handlePresetQuery('详细解释语言学习可理解性输入假说是什么？')}><img src={msgIcon} alt='Query' />可理解性输入假说是什么?</button>
+                        <button className={styles.query} onClick={() => handlePresetQuery('输入多少个小时才能达到B1~B2水平?')}><img src={msgIcon} alt='Query' />输入多少个小时才能达到B1~B2水平?</button>
+                        <button className={styles.query} onClick={() => handlePresetQuery('英语口语怎么练习？推荐哪些外教平台？')}><img src={msgIcon} alt='Query' />口语怎么练习?</button>
+                    </div>
                 </div>
+                <div className={styles.lowerSide}>
+                    <div className={styles.listItems} onClick={handleHomeClick}>
+                        <img src={home} alt='Home' className={styles.listItemsImg} />Home
+                    </div>
+                    <div className={styles.listItems} onClick={openFeedbackModal}>
+                        <img src={saved} alt='Feedback' className={styles.listItemsImg} />
+                        Feedback
+                    </div>
 
-                <div className="chat-messages-container" ref={chatContainerRef}>
-                    {messages.map((message, index) => (
-                        <div
-                            key={index}
-                            className={`message ${message.sender === "user" ? "user" : "ai"}`}
-                        >
-                            {message.isCode ? (
-                                <MDEditor.Markdown
-                                    source={message.text}
-                                    style={{ whiteSpace: "pre-wrap" }}
-                                />
-                            ) : (
-                                <>
-                                    <p className="message-text">{message.text}</p>
-                                    <span
-                                        className={`time ${message.sender === "user" ? "user" : "ai"
-                                            }`}
-                                    >
-                                        {message.timestamp
-                                            ? dayjs(message.timestamp).format("DD.MM.YYYY HH:mm:ss")
-                                            : ""}
-                                    </span>
-                                </>
-                            )}
+                    {isFeedbackModalOpen && (
+                        <div className={modalStyles.backdrop}>
+                            <div className={modalStyles.content}>
+                                <h2>Feedback about ChatGPT</h2>
+                                <form className={modalStyles.form} onSubmit={submitFeedback}>
+                                    <textarea
+                                        className={modalStyles.textarea}
+                                        value={feedback}
+                                        onChange={(e) => setFeedback(e.target.value)}
+                                        placeholder="Write feedback about ChatGPT..."
+                                    />
+                                    <label className={modalStyles.label}>
+                                        <input
+                                            type="checkbox"
+                                            checked={includeEmail}
+                                            onChange={(e) => setIncludeEmail(e.target.checked)}
+                                        />
+                                        Include my email address
+                                    </label>
+                                    <button className={modalStyles.submitButton} type="submit">
+                                        Send to author's email
+                                    </button>
+                                </form>
+                                <button className={modalStyles.closeButton} onClick={closeFeedbackModal}>
+                                    Close
+                                </button>
+                            </div>
                         </div>
-                    ))}
-                </div>
+                    )}
 
-                <div className="chat-input-box">
-                    <InputBox sendMessage={sendMessage} loading={loading} />
+
+                    <div className={styles.listItems} onClick={openPaymentModal}>
+                        <img src={rocket} alt='Buy me a coffee' className={styles.listItemsImg} />
+                        Buy me a coffee
+                    </div>
+
+                    {isPaymentModalOpen && (
+                        <div className={modalStyles.backdrop}>
+                            <div className={modalStyles.paymentModalContent}>
+                                <h2 className={modalStyles.paymentText}>Support My Work</h2>
+                                <p className={modalStyles.paymentText}>如果你认可我的贡献，请买杯蜜雪冰城给我！</p>
+                                <img src={WeChatPay} alt="WeChat Pay QR Code" className={modalStyles.paymentImage} />
+                                <p className={modalStyles.paymentText}>Scan the QR code with WeChat to make a payment.</p>
+                                <button className={modalStyles.closeButton} onClick={closePaymentModal}>Close</button>
+                            </div>
+                        </div>
+                    )}
+
+
                 </div>
-            </section>
+            </div>
+            <div className={styles.main}>
+                <div className={styles.chats}>
+                    <div className={styles.chat}>
+                        <img className={styles.chatImg} src={userIcon} alt='' /><p className={styles.txt}>Hi~</p>
+                    </div>
+                    {messages.map((message, i) =>
+                        <div key={i} className={`${styles.chat} ${message.isBot ? styles.bot : ''}`}>
+                            <img className={styles.chatImg} src={message.isBot ? gptImgLogo : userIcon} alt='' />
+                            <p className={styles.txt}>
+                                {message.text}
+                            </p>
+                        </div>
+                    )}
+                    <div ref={msgEnd} />
+                </div>
+                <div className={styles.chatFooter}>
+                    <div className={styles.inp}>
+                        <input type='text' placeholder='Send a message' value={input} onKeyDown={handleEnter} onChange={(e) => { setInput(e.target.value) }} />
+                        <button className={styles.send} onClick={handleSend}><img src={sendBtn} alt='Send' /></button>
+                    </div>
+                    <p>ChatGPT can make mistakes. Consider checking important information.</p>
+                </div>
+            </div>
         </div>
+    )
+}
 
-
-
-    );
-};
-
-export default UserProfiles;
+export default UserProfiles
