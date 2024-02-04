@@ -6,8 +6,16 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 const app = express();
+
+//引入身份验证、社区路由
+const authRoutes = require('../routes/authRoutes');
+const communityRoutes = require('../routes/communityRoutes');
+
 app.use(cors());
 app.use(express.json());
+// 将用户相关的路由挂载到/api路径下
+app.use('/api', authRoutes);
+app.use('/api/community', communityRoutes);
 
 
 const transporter = nodemailer.createTransport({

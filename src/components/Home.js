@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './Home.module.css';
 import { useNavigate } from 'react-router-dom'; // 引入useNavigate
 
 const Home = () => {
@@ -10,11 +11,24 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <h1>欢迎来到基于可理解性输入假说的语言学习网站</h1>
-            <button onClick={navigateToRegister}>立即尝试</button>
+
+        <div className={styles.HomePage}>
+            {/* Hero Section */}
+            <div className={styles.heroSection}>
+                <h1 className={styles.headline}>欢迎来到基于可理解性输入假说的语言学习网站</h1>
+                <button className={styles.ctaButton} onClick={navigateToRegister}>立即尝试</button>
+            </div>
+
+
         </div>
     );
 }
 
 export default Home;
+
+
+
+
+
+
+

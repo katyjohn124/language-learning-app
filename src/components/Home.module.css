@@ -1,0 +1,50 @@
+/* Home.module.css */
+
+.HomePage {
+    /* 假设Header和Footer的高度分别为60px */
+    height: calc(100vh - 120px);
+    /* 100vh是全屏的高度，减去Header和Footer总共的高度 */
+    background-image: url('../assets/ab231d4ff11c81321e75e1b5a1a6517.png');
+    /* 更新为您的图片路径 */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* 保持空间在顶部和底部 */
+}
+
+.heroSection {
+    flex-grow: 1;
+    /* 让heroSection占据所有可用空间 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* 垂直居中内容 */
+    align-items: center;
+    /* 水平居中内容 */
+    padding: 20px;
+    /* 根据需要调整内边距 */
+}
+
+.headline {
+    margin: 0;
+    color: #fff;
+    /* 白色字体，确保在深色背景上可见 */
+    text-align: center;
+    font-size: 2rem;
+    /* 根据需要调整字号 */
+}
+
+.ctaButton {
+    margin-top: 20px;
+    /* 按钮与标题间距 */
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4CAF50;
+    /* 示例颜色 */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

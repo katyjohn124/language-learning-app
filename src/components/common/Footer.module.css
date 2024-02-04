@@ -1,0 +1,53 @@
+/* Footer.module.css */
+
+.footer {
+    background-color: #2e445a;
+    /* 浅灰色背景 */
+    padding: 20px 40px;
+    /* 增加左右的内边距以保持内容不会紧贴边缘 */
+    display: flex;
+    justify-content: space-between;
+    /* 使子元素分布在两端 */
+    align-items: center;
+    /* 垂直居中 */
+    font-size: 1.3rem;
+    /* 增大字体大小 */
+}
+
+.contact {
+    display: flex;
+    gap: 20px;
+    /* 图片和联系方式之间的间距 */
+    align-items: center;
+    /* 垂直居中 */
+}
+
+.contact img,
+.qrCode img {
+    width: 80px;
+    /* 统一图片宽度 */
+    height: auto;
+    /* 自动调整图片高度以保持宽高比 */
+    cursor: pointer;
+}
+
+.rightText {
+    text-align: right;
+    /* 文本右对齐 */
+    display: flex;
+    flex-direction: column;
+}
+
+/* 响应式布局调整 */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+
+    .rightText,
+    .contact {
+        text-align: center;
+        justify-content: center;
+    }
+}

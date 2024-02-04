@@ -13,7 +13,7 @@ router.post('/register', async (req, res) => {
         pool.query('INSERT INTO users (username, password_hash) VALUES (?, ?)', [username, hashedPassword], (error, results) => {
             if (error) {
                 console.error('Database error during user registration:', error);
-                res.status(500).send('Error during user registration');
+                res.status(500).send('用户已经注册过！');
             } else {
                 res.status(201).send('User registered successfully');
             }
