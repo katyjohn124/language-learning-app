@@ -6,7 +6,7 @@ const communityController = require('../controllers/communityController');
 router.get('/posts', communityController.getAllPosts);
 
 // 创建新帖子
-router.post('/posts', communityController.createPost);
+// router.post('/posts', communityController.createPost);
 
 // 获取特定帖子的评论
 router.get('/posts/:postId/comments', communityController.getCommentsForPost);

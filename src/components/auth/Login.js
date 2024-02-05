@@ -12,7 +12,7 @@ function Login() {
         event.preventDefault();
         try {
             const response = await axios.post('http://localhost:3001/api/login', { username, password });
-            console.log(response.data);  // 确保这里正确打印响应数据
+            // console.log(response.data);  // 确保这里正确打印响应数据
 
             // 将 'accessToken' 更改为 'token'
             localStorage.setItem('token', response.data.token);  // 更正后的代码

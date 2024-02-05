@@ -1,4 +1,4 @@
-// 这应该是您的数据库连接模块
+
 const db = require('../../db');
 
 // 获取所有帖子
@@ -13,19 +13,19 @@ exports.getAllPosts = (req, res) => {
 };
 
 // 创建新帖子
-exports.createPost = (req, res) => {
-    const { user_id, title, content } = req.body;
-    if (!title || !content) {
-        return res.status(400).send('Title and content are required');
-    }
-    const sql = 'INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)';
-    db.query(sql, [user_id, title, content], (error, results) => {
-        if (error) {
-            return res.status(500).send('Server error');
-        }
-        res.status(201).json({ postId: results.insertId });
-    });
-};
+// exports.createPost = (req, res) => {
+//     const { user_id, title, content } = req.body;
+//     if (!title || !content) {
+//         return res.status(400).send('Title and content are required');
+//     }
+//     const sql = 'INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)';
+//     db.query(sql, [user_id, title, content], (error, results) => {
+//         if (error) {
+//             return res.status(500).send('Server error');
+//         }
+//         res.status(201).json({ postId: results.insertId });
+//     });
+// };
 
 // 获取特定帖子的所有评论
 exports.getCommentsForPost = (req, res) => {

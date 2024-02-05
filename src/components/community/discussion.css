@@ -1,6 +1,5 @@
-/* Discussion Board Container */
 .discussion-board {
-    background-color: #f0f2f5;
+    background-color: #f9f7f7;
     /* Light grey background for the entire discussion board */
     border-radius: 8px;
     /* Rounded corners */
@@ -11,7 +10,7 @@
     max-width: 800px;
     /* Maximum width with center alignment */
     margin: 20px auto;
-    /* Center the discussion board */
+    height: 600px;
 }
 
 /* Discussion Title */
@@ -73,6 +72,7 @@
     /* Remove default list style */
     padding: 0;
     /* Remove default padding */
+    color: black;
 }
 
 .post-card {

@@ -45,9 +45,12 @@ router.post('/login', async (req, res) => {
         const user = results[0];
         if (await bcrypt.compare(password, user.password_hash)) {
             console.log('ACCESS_TOKEN_SECRET:', process.env.ACCESS_TOKEN_SECRET);
-            const token = jwt.sign({ username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
+            const token = jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
             console.log('Generated token:', token);
             console.log(token); // 这里打印 token，确保它被正确生成
+            //结构查看jwt结构
+            const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, { ignoreExpiration: true });
+            console.log('Decoded JWT:', decoded);
 
             res.status(200).json({ message: 'Login successful', token: token });
         } else {

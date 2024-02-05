@@ -1,24 +1,25 @@
-import React from 'react'
-import AItools from './AItools'
-import ShadowVideos from './ShadowVideos'
-import TutorialPlatform from './TutorialPlatform'
-import './speaking.css'
-
+// Speaking.js
+import React from 'react';
+import AItools from './AItools';
+import ShadowVideos from './ShadowVideos';
+import TutorialPlatform from './TutorialPlatform';
+import styles from './speaking.module.css'; // Ensure this is the correct path
 
 const Speaking = () => {
     return (
-        <div className='speaking-container'>
-            <section className='shadow-section'>
+        <div className={styles.container}>
+            {/* Each section should snap into place as you scroll */}
+            <div className={styles.section}>
                 <ShadowVideos />
-            </section>
-            <section className='AItools-section'>
+            </div>
+            <div className={styles.section}>
                 <AItools />
-            </section>
-            <section className='platform-section'>
+            </div>
+            <div className={styles.section}>
                 <TutorialPlatform />
-            </section>
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Speaking
+export default Speaking;

@@ -1,0 +1,19 @@
+/* speaking.module.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    /* Enables vertical scrolling */
+    scroll-snap-type: y mandatory;
+    /* Enables snap points for vertical scrolling */
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.section {
+    scroll-snap-align: start;
+    /* Aligns the snap point at the start edge of the container */
+    height: 100vh;
+    /* Full viewport height */
+    /* Rest of your styles */
+}

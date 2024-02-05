@@ -4,6 +4,7 @@ const cors = require('cors');
 const axios = require('axios');
 require('dotenv').config();
 const nodemailer = require('nodemailer');
+const db = require('../../db');
 
 const app = express();
 
@@ -28,6 +29,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+//邮箱反馈
 app.post('/api/feedback', async (req, res) => {
     const { feedback, includeEmail, userEmail } = req.body;
 
@@ -56,6 +58,37 @@ app.post('/api/feedback', async (req, res) => {
     }
 });
 
+//创建新帖子
+app.post('/api/posts', (req, res) => {
+    const { user_id, title, content } = req.body;
+    console.log(req.body);
+
+    if (!user_id || !title || !content) {
+        return res.status(400).send('User ID, title, and content are required');
+    }
+
+    const sql = 'INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)';
+    db.query(sql, [user_id, title, content], (error, results) => {
+        if (error) {
+            console.error(error); // Log the error for debugging
+            return res.status(500).send('Error creating new post');
+        }
+        res.status(201).json({ postId: results.insertId, message: 'New post created' });
+    });
+});
+
+
+// // 获取帖子列表的路由
+// app.get('/api/community/posts', async (req, res) => {
+//     try {
+//         // 使用MySQL查询
+//         const [results] = await pool.query('SELECT * FROM posts ORDER BY created_at DESC');
+//         res.json(results); // 直接返回查询结果，MySQL不需要像PostgreSQL那样访问 `.rows`
+//     } catch (error) {
+//         console.error('Error fetching posts:', error);
+//         res.status(500).send('Server error');
+//     }
+// });
 
 //调用chatgpt api
 app.post('/api/openai', async (req, res) => {

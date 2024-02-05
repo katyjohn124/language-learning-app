@@ -1,15 +1,17 @@
 import React from 'react';
 
-const Post = ({ id, title, summary, likes, comments, shares }) => {
+const Post = ({ id, user_id, title, content, likes, comments, shares }) => {
+
+
     return (
         <div className="post">
             <h3>{title}</h3>
-            <p>{summary}</p>
-            {/* 这里您可以添加点赞、评论、转发的图标和数量 */}
-            <span>Likes: {likes}</span>
-            <span>Comments: {comments}</span>
-            <span>Shares: {shares}</span>
-            {/* 详情按钮或链接 */}
+            <p>{content.substring(0, 100)}...</p>
+            <div className="post-interactions">
+                <span>Likes: {likes}</span>
+                <span>Comments: {comments}</span>
+                <span>Shares: {shares}</span>
+            </div>
         </div>
     );
 };

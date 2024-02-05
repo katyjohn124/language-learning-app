@@ -1,19 +1,20 @@
-
 import React from 'react';
+import CreatePost from './CreatePost';
 import PostList from './PostList';
-import PostForm from './PostForm';
-import './discussion.css'
-
+import SortDropdown from './SortDropdown';
+import './discussion.css';
 
 
 const DiscussionBoard = () => {
     return (
         <div className="discussion-board">
             <h1 className="discussion-title">社区讨论板</h1>
-            <PostForm />
+            <CreatePost />
+            <SortDropdown />
             <PostList />
         </div>
     );
 };
 
 export default DiscussionBoard;
+
