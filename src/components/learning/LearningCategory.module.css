@@ -1,0 +1,56 @@
+.container {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 20px;
+    /* background: #454242; */
+
+    border-radius: 10px;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 570px;
+}
+
+.category {
+    text-align: center;
+}
+
+.categoryList {
+    background-color: aliceblue;
+    width: 100%;
+    /* 列表占满容器宽度 */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 1.3rem;
+
+}
+
+.categoryItem {
+    width: 100%;
+    /* 列表项占满列表宽度 */
+    margin: 10px 0;
+    /* 在列表项之间添加垂直空间 */
+    padding: 20px;
+    /* 增加一些内边距 */
+    border-bottom: 1px solid #e0e0e0;
+    /* 分隔线 */
+
+}
+
+.categoryLink {
+    text-decoration: none;
+    /* 移除链接下划线 */
+    color: #333;
+    /* 链接颜色 */
+    font-weight: bold;
+    /* 字体加粗 */
+}
+
+.categoryDescription {
+    color: #666;
+    /* 描述文字的颜色 */
+    margin-top: 5px;
+    font-size: 1.3rem;
+}
