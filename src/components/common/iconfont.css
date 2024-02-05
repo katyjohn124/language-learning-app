@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'iconfont';
+  src:
+    /* IE6-IE8 */
+    url('../../assets/fonts/iconfont.woff2') format('woff2'),
+    /* 超过IE9 */
+    url('../../assets/fonts/iconfont.woff') format('woff'),
+    /* Modern Browsers */
+    url('../../assets/fonts/iconfont.ttf') format('truetype');
+  /* Safari, Android, iOS */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-RectangleCopy:before {
+  content: "\e6a2";
+}
+
+.icon-RectangleCopy1:before {
+  content: "\e6a4";
+}
+
+.icon-RectangleCopy2:before {
+  content: "\e6a5";
+}
