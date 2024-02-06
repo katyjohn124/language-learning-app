@@ -1,10 +1,10 @@
 
 import React, { useState } from 'react';
 import styles from './Header.module.css';
-import { NavLink } from 'react-router-dom';
+
 import logo from '../../assets/Bard_Generated_Image.jpg'
 import '../common/iconfont.css'
-
+import { NavLink, useNavigate } from 'react-router-dom';
 
 
 
@@ -12,14 +12,19 @@ const Header = () => {
 
     const [showDropdown, setShowDropdown] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filter, setFilter] = useState('');
+    const [filter, setFilter] = useState('hot'); // 默认为热门排序
+    const navigate = useNavigate(); // React Router的导航函数
+
 
     const toggleDropdown = () => setShowDropdown(!showDropdown);
     const handleSearchChange = (event) => setSearchTerm(event.target.value);
 
     const performSearch = () => {
-        // 搜索逻辑，可能需要调用API或更新状态
-        console.log('Searching for:', searchTerm, 'with filter:', filter);
+        // 构建查询参数
+        const queryParams = `?keyword=${encodeURIComponent(searchTerm)}&sort=${filter}`;
+
+        // 重定向到 SearchResult 组件，并传递查询参数
+        navigate(`/search-result${queryParams}`);
     };
 
     return (
@@ -56,7 +61,6 @@ const Header = () => {
                         <a href="/" onClick={(e) => { e.preventDefault(); setFilter('new'); }}>新帖</a>
                     </div>
                 </div>
-
 
                 <NavLink
                     to="/userprofiles"

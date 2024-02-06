@@ -256,6 +256,34 @@ app.delete('/api/comments/:id/like', (req, res) => {
     });
 });
 
+// Define the search API endpoint
+app.get('/api/community/search', (req, res) => {
+    // Extract query parameters
+    const { keyword, sort } = req.query;
+
+    // Initialize base SQL query
+    let query = 'SELECT * FROM posts WHERE title LIKE ? OR content LIKE ?';
+
+    // Parameters for SQL query to prevent SQL injection
+    const searchWildcard = `%${keyword}%`;
+    let queryParams = [searchWildcard, searchWildcard];
+
+    // If 'sort' is 'hot', modify the query to sort by likes and comments_count
+    if (sort === 'hot') {
+        query += ' ORDER BY likes + comments_count DESC';
+    }
+
+    // Execute the query with the provided parameters
+    db.query(query, queryParams, (error, results) => {
+        if (error) {
+            // Handle errors by sending a response with an appropriate status code
+            res.status(500).send('Error in database operation');
+        } else {
+            // Send the results back as JSON
+            res.json(results);
+        }
+    });
+});
 
 
 

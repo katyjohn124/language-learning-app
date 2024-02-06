@@ -15,6 +15,7 @@ import Listening from './components/learning/categorydetail/listening/Listening'
 import Reading from './components/learning/categorydetail/reading/Reading';
 import Speaking from './components/learning/categorydetail/speaking/Speaking';
 import { AuthProvider } from './contexts/AuthContext';
+import SearchResult from './components/common/SearchResult';
 
 
 
@@ -26,6 +27,7 @@ export default function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" exact element={<Home />} />
+          <Route path="/search-result" element={<SearchResult />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/userprofiles" element={<UserProfiles />} />
