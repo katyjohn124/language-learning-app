@@ -1,0 +1,98 @@
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 700px;
+    border-radius: 15px;
+    overflow: hidden;
+    /* 确保内容不会溢出容器 */
+}
+
+.postContent {
+    margin-bottom: 20px;
+    color: black;
+}
+
+.postContent h1 {
+    font-size: 2em;
+    /* 更大的标题 */
+    margin-bottom: 0.5em;
+    /* 标题与内容间隔 */
+}
+
+.commentIcon,
+.shareIcon {
+    cursor: pointer;
+    padding-left: 10px;
+}
+
+.postContent p {
+    font-size: 1.4rem;
+    /* 更大的正文字体 */
+    line-height: 1.6;
+    /* 增加行高 */
+    margin-bottom: 1em;
+    /* color: black; */
+    /* 段落之间间隔 */
+}
+
+.commentBox {
+    width: 100%;
+    /* 使输入框宽度填满容器 */
+    margin-top: 20px;
+    /* 与上方内容间隔 */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.commentBox textarea {
+    width: 100%;
+    /* 使文本域宽度填满输入框 */
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    /* 与评论按钮间隔 */
+    border: 1px solid #ccc;
+    min-height: 100px;
+    /* 文本域的最小高度 */
+}
+
+.commentBox button {
+    padding: 0.5em 1em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.commentList {
+    max-height: 400px;
+    /* 或您需要的高度 */
+    overflow-y: auto;
+    /* 启用垂直滚动 */
+    padding-right: 17px;
+    /* 增加等于滚动条宽度的右填充 */
+    box-sizing: content-box;
+    color: black;
+}
+
+/* 隐藏滚动条的样式，但仍然可以滚动 */
+.commentList::-webkit-scrollbar {
+    display: none;
+    /* 隐藏滚动条 - Chrome, Safari 和 Opera */
+}
+
+.commentList {
+    -ms-overflow-style: none;
+    /* IE 和 Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.commentItem {
+    margin-bottom: 10px;
+    /* 样式您的评论项 */
+}

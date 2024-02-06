@@ -35,7 +35,7 @@ const PostList = () => {
     return (
         <div className="post-list">
             {posts.map((post) => (
-                <Post key={post.id} {...post} />
+                <Post key={post.id} username={post.username} {...post} />
             ))}
         </div>
     );

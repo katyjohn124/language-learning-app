@@ -7,7 +7,7 @@
     /* Subtle shadow for depth */
     padding: 20px;
     /* Space inside the container */
-    max-width: 800px;
+    max-width: 1000px;
     /* Maximum width with center alignment */
     margin: 20px auto;
     height: 600px;
@@ -66,14 +66,57 @@
     /* Pointer cursor on hover */
 }
 
-/* Post List Styles */
 .post-list {
-    list-style: none;
-    /* Remove default list style */
-    padding: 0;
-    /* Remove default padding */
+    max-height: 480px;
+    /* 或根据您的布局需要调整 */
+    overflow-y: auto;
+    /* 允许垂直方向上的滚动 */
+    margin-bottom: 20px;
     color: black;
+
+    /* 隐藏滚动条的样式 */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
+/* Chrome, Safari 和 Opera */
+.post-list::-webkit-scrollbar {
+    display: none;
+}
+
+.post {
+    margin-bottom: 20px;
+    /* 增加帖子之间的间距 */
+    padding: 15px;
+    /* 在帖子内部增加一些填充 */
+    background-color: #f8eaea;
+    /* 设置背景颜色以提升对比度 */
+    border-radius: 5px;
+    /* 为帖子添加圆角 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 添加阴影效果 */
+}
+
+.post h3 {
+    margin-bottom: 10px;
+    /* 增加标题和内容之间的间距 */
+}
+
+.post p {
+    margin-bottom: 10px;
+    /* 增加内容和互动选项之间的间距 */
+    line-height: 1.6;
+    /* 增加行间距 */
+}
+
+.post-interactions span {
+    margin-right: 10px;
+    /* 增加点赞、评论、分享之间的间距 */
+}
+
+/* 根据个人喜好调整其他样式 */
 
 .post-card {
     background-color: #fff;
@@ -98,13 +141,27 @@
 }
 
 .post-content {
-    font-size: 14px;
-    /* Standard font size for content */
-    color: #666;
-    /* Lighter grey for content text */
+    overflow-y: auto;
+    /* 在内容超出容器高度时提供垂直滚动 */
+    max-height: 150px;
+    /* 根据您的设计需求调整，确保内容适合于您的布局 */
 }
 
 .sort-dropdown {
     margin-bottom: 20px;
     /* Space above the post list */
+}
+
+.icon-aixin {
+    color: #ccc;
+    /* 默认颜色 */
+    cursor: pointer;
+    /* 将鼠标指针变为手形，表示这是可点击的 */
+    transition: color 0.3s;
+    /* 颜色变化过渡效果 */
+}
+
+.icon-aixin.liked {
+    color: #e0245e;
+    /* 已点赞时的颜色，通常是红色系 */
 }

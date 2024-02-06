@@ -1,0 +1,53 @@
+.comment {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.commentHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.username {
+    font-weight: bold;
+    color: black;
+}
+
+.timestamp {
+    color: #1b1b1b;
+    font-size: 1rem;
+}
+
+.content {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+}
+
+.commentFooter {
+    display: flex;
+    align-items: center;
+}
+
+.likeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.icon-dianzan {
+    color: #ccc;
+    /* 默认颜色 */
+    cursor: pointer;
+    /* 将鼠标指针变为手形，表示这是可点击的 */
+    transition: color 0.3s;
+    /* 颜色变化过渡效果 */
+}
+
+.icon-dianzan.liked {
+    color: #ff4500 !important;
+}
