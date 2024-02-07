@@ -1,0 +1,84 @@
+.formContainer {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #fff;
+    height: 600px;
+    /* Adjust height as needed */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    /* Use a percentage to keep it responsive */
+    max-width: 400px;
+    /* Max width for the form */
+}
+
+.label {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+    /* A darker grey color for the text */
+}
+
+.input {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.button {
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+    /* Larger font size for better readability */
+    margin-top: 1rem;
+    /* Add some space above the button */
+}
+
+.message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+    margin-top: 1rem;
+    /* Add space above the link */
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Additional styles for headings and paragraph */
+h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1rem;
+    color: #333;
+}

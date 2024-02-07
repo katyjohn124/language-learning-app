@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import styles from './Form.module.css'
 
 function Register() {
     //初始化
@@ -28,19 +29,19 @@ function Register() {
 
 
     return (
-        <div>
+        <div className={styles.formContainer}>
             <h2>注册</h2>
-            <form onSubmit={handleSubmit}>
-                <label>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <label className={styles.label}>
                     用户名:
-                    <input type="text" value={username} onChange={e => setUsername(e.target.value)} required />
+                    <input className={styles.input} type="text" value={username} onChange={e => setUsername(e.target.value)} required />
                 </label>
-                <label>
+                <label className={styles.label}>
                     密码:
-                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                    <input className={styles.input} type="password" value={password} onChange={e => setPassword(e.target.value)} required />
                 </label>
-                <button type="submit">注册</button>
-                <p>
+                <button className={styles.button} type="submit">注册</button>
+                <p className={styles.message}>
                     已经注册？ <Link to="/login">请登录</Link>
                 </p>
             </form>

@@ -4,6 +4,7 @@ import Comment from './Comment'
 import styles from './postdetail.module.css'
 import '../community/iconfont.css'
 import { useAuth } from '../../contexts/AuthContext';
+import DOMPurify from 'dompurify';
 
 const PostDetail = () => {
     const { id } = useParams();
@@ -15,6 +16,19 @@ const PostDetail = () => {
         const options = { year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
         return new Date(dateString).toLocaleDateString(undefined, options);
     };
+
+    const createMarkup = (htmlContent) => {
+        return { __html: DOMPurify.sanitize(htmlContent) };
+    };
+
+    const renderPostContent = (content) => {
+        // Replace URLs in the text with anchor tags
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return content.replace(urlRegex, (url) => `<a href="${url}" target="_blank" style="color: #blue;">${url}</a>`);
+    };
+
+
+
 
     useEffect(() => {
         const fetchPostAndComments = async () => {
@@ -107,7 +121,9 @@ const PostDetail = () => {
             {post && (
                 <div className={styles.postContent}> {/* 修改这里，使用模块化样式 */}
                     <h1>{post.title}</h1>
-                    <p>{post.content}</p>
+                    <p dangerouslySetInnerHTML={createMarkup(renderPostContent(post.content))} />
+                    {post.image && <img src={post.image} alt="Post" className="post-image" />}
+                    {/* <p>{post.content}</p> */}
                     <div className={styles.commentsHeader}> {/* 修改这里，使用模块化样式 */}
                         <span className={styles.commentIcon}>
                             <i className="iconfont icon-pinglun" />

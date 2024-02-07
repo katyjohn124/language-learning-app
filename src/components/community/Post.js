@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../community/iconfont.css'
 
-const Post = ({ id, username, title, content, likes, comments_count, shares }) => {
+const Post = ({ id, username, title, content, likes, comments_count, shares, image }) => {
     const navigate = useNavigate();
     const [liked, setLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(likes);
@@ -13,6 +13,11 @@ const Post = ({ id, username, title, content, likes, comments_count, shares }) =
         // For now, we're setting it to false by default
         setLiked(false);
     }, [id]);
+
+    useEffect(() => {
+        console.log('Image prop:', image); // This will log the image URL every time it changes
+    }, [image]);
+
 
     const likePost = async (e) => {
         e.preventDefault(); // 防止事件冒泡
@@ -49,7 +54,11 @@ const Post = ({ id, username, title, content, likes, comments_count, shares }) =
     return (
         <div className="post" onClick={goToPostDetail}>
             <h3>{title} <span>by {username}</span></h3>
+
+            {/* <img src="http://localhost:3001/images/your-test-image.jpg" alt="Test" /> */}
             <p>{content.substring(0, 100)}...</p>
+            {image && <img src={image} alt="Post" className="post-image" />}
+
             <div className="post-interactions" onClick={e => e.stopPropagation()}>
                 <span onClick={likePost}>
                     <i className={`iconfont icon-aixin ${liked ? 'liked' : ''}`} />

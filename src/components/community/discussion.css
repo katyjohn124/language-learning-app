@@ -1,4 +1,5 @@
 .discussion-board {
+    display: flex;
     background-color: #f9f7f7;
     /* Light grey background for the entire discussion board */
     border-radius: 8px;
@@ -25,6 +26,7 @@
 
 /* Post Form Styles */
 .post-form {
+    max-width: 1000px;
     background-color: #fff;
     /* White background for the form */
     padding: 15px;
@@ -34,11 +36,11 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     /* Subtle shadow for depth */
     margin-bottom: 20px;
-    /* Space between form and post list */
+    margin: 0 auto;
+    height: 600px;
 }
 
-.post-form input,
-.post-form textarea {
+.post-form input {
     width: 100%;
     /* Full width inputs */
     padding: 10px;
@@ -51,6 +53,13 @@
     /* Slightly rounded corners for inputs */
 }
 
+.post-form textarea {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    height: 400px;
+}
+
 .post-form button {
     background-color: #007bff;
     /* Bootstrap primary color for the button */
@@ -61,9 +70,10 @@
     border: none;
     /* Remove border */
     border-radius: 4px;
+    margin-left: 5px;
     /* Rounded corners for the button */
     cursor: pointer;
-    /* Pointer cursor on hover */
+    flex: 1;
 }
 
 .post-list {
@@ -78,7 +88,7 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
-    /* Firefox */
+    flex: 2;
 }
 
 /* Chrome, Safari 和 Opera */
@@ -164,4 +174,25 @@
 .icon-aixin.liked {
     color: #e0245e;
     /* 已点赞时的颜色，通常是红色系 */
+}
+
+/* Add this to your CSS file */
+.image-preview {
+    max-width: 100%;
+    max-height: 70px;
+    /* Adjust as needed */
+    object-fit: cover;
+    /* This will ensure the image aspect ratio is preserved */
+}
+
+
+.post-image {
+    max-width: 100%;
+    /* This limits the image width to the container's width */
+    max-height: 200px;
+    /* Adjust this value as needed */
+    object-fit: cover;
+    display: block;
+
+
 }

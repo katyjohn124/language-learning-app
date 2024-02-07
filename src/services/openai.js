@@ -6,6 +6,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 const db = require('../../db');
 const authenticateToken = require('../controllers/authenticateToken');
+const path = require('path');
+const multer = require('multer');
 
 const app = express();
 
@@ -99,23 +101,28 @@ app.post('/api/feedback', async (req, res) => {
 });
 
 //创建新帖子
+// Assuming you have added an 'image' column to your 'posts' table in the database
 app.post('/api/posts', (req, res) => {
-    const { user_id, title, content } = req.body;
-    console.log(req.body);
+    const { user_id, title, content, image } = req.body; // Include 'image' in the destructuring
 
+    // Validation to ensure required fields are present
     if (!user_id || !title || !content) {
         return res.status(400).send('User ID, title, and content are required');
     }
 
-    const sql = 'INSERT INTO posts (user_id, title, content) VALUES (?, ?, ?)';
-    db.query(sql, [user_id, title, content], (error, results) => {
+    // The SQL query now includes the 'image' column
+    const sql = 'INSERT INTO posts (user_id, title, content, image) VALUES (?, ?, ?, ?)';
+    // The 'image' variable is now included in the array of values
+    db.query(sql, [user_id, title, content, image], (error, results) => {
         if (error) {
-            console.error(error); // Log the error for debugging
+            console.error(error);
             return res.status(500).send('Error creating new post');
         }
-        res.status(201).json({ postId: results.insertId, message: 'New post created' });
+        // Include the 'image' property in the response if needed
+        res.status(201).json({ postId: results.insertId, message: 'New post created', image });
     });
 });
+
 
 
 // // 获取帖子列表的路由
@@ -286,6 +293,32 @@ app.get('/api/community/search', (req, res) => {
 });
 
 
+// Handling image logic
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Ensure this uploads directory exists
+    },
+    filename: function (req, file, cb) {
+        // Using the original name can cause issues if duplicates are uploaded
+        cb(null, Date.now() + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({ storage: storage });
+
+app.post('/api/upload', upload.single('file'), (req, res, next) => {
+    if (!req.file) {
+        return res.status(400).send('No file uploaded.');
+    }
+
+    // Generate the URL for the uploaded image
+    const imageUrl = `${req.protocol}://${req.get('host')}/images/${req.file.filename}`;
+    // Respond with the image URL
+    res.json({ imageUrl: imageUrl });
+});
+
+// Serve images from the uploads directory
+app.use('/images', express.static(path.join(__dirname, '../../uploads')));
 
 
 const PORT = process.env.PORT || 3001;
