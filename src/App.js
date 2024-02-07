@@ -12,7 +12,6 @@ import DiscussionBoard from './components/community/DiscussionBoard';
 import PostForm from './components/community/PostForm';
 import PostDetail from './components/community/PostDetail';
 import Listening from './components/learning/categorydetail/listening/Listening'
-import Reading from './components/learning/categorydetail/reading/Reading';
 import Speaking from './components/learning/categorydetail/speaking/Speaking';
 import { AuthProvider } from './contexts/AuthContext';
 import SearchResult from './components/common/SearchResult';
@@ -33,7 +32,6 @@ export default function App() {
           <Route path="/userprofiles" element={<UserProfiles />} />
           <Route path="/learningcategory" element={<LearningCategory />} />
           <Route path="/learningcategory/listening" element={<Listening />} />
-          <Route path="/learningcategory/reading" element={<Reading />} />
           <Route path="/learningcategory/speaking" element={<Speaking />} />
           <Route path="/discussionboard" element={<DiscussionBoard />} />
           <Route path="/create-post" element={<PostForm />} />

@@ -1,0 +1,69 @@
+.listeningContainer {
+    font-family: 'Arial', sans-serif;
+    color: #141313;
+    padding: 20px;
+    line-height: 1.5;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+
+}
+
+h1 {
+    font-size: 2rem;
+    /* 大标题的大小 */
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5rem;
+    /* 小标题的大小 */
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+p,
+li {
+    font-size: 1.2rem;
+    /* 正文和列表项的文字大小 */
+    margin-bottom: 0.5rem;
+    /* 正文和列表项的底部间隔 */
+}
+
+ul {
+    padding-left: 20px;
+    /* 列表的左侧内边距 */
+    margin-bottom: 1rem;
+    /* 列表的底部外边距 */
+}
+
+
+
+/* 设置iframe的样式 */
+.listeningContainer iframe {
+    display: block;
+    max-width: 100%;
+    /* 确保iframe不会超过其容器宽度 */
+    height: 400px;
+    /* 高度自适应 */
+    margin: 0 auto;
+    /* 在iframe上下添加间距，并居中显示 */
+    border: none;
+    /* 去除iframe的边框 */
+}
+
+
+
+.listeningContainer img {
+    max-width: 100%;
+    /* 确保图片不会超过其容器宽度 */
+    height: auto;
+    /* 保持图片的原始比例 */
+    display: block;
+    /* 图片独占一行 */
+    margin: 16px auto;
+    /* 在图片上下添加间距，并居中显示 */
+    border-radius: 8px;
+    /* 可选：为图片添加圆角 */
+}
