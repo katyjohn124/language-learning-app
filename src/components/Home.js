@@ -32,8 +32,9 @@ import React from 'react';
 import styles from './Home.module.css';
 import { useNavigate } from 'react-router-dom';
 import AI from '../assets/4b14e6a89167d2da2291a9357eca3dc.png'
-import learn from '../assets/3a19f5b661d4ac68a005ebdb8d91356.png'
-import share from '../assets/bb24cded9ffff7b6231a1bad06ac34b.png'
+import learn from '../assets/4ee1c51e3b944d0d6e454e35fe936d8.png'
+import share from '../assets/6a217e64e43a10bda0688eca8cbc9e0.png'
+import searchimg from '../assets/6d00def50dff9f426b36c51c70be44b.png'
 
 const Home = () => {
     const navigate = useNavigate();
@@ -61,7 +62,7 @@ const Home = () => {
                         <p>学习功能——这里列了听说读写四个功能，分别介绍如何用可理解性输入就假说去一一练习！</p>
                     </div>
                     <div className={styles.feature}>
-                        <img src="path-to-search-feature-image" alt="搜索功能" />
+                        <img src={searchimg} alt="搜索功能" />
                         <p>搜索功能</p>
                     </div>
 

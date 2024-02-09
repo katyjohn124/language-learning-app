@@ -5,6 +5,7 @@ import styles from './postdetail.module.css'
 import '../community/iconfont.css'
 import { useAuth } from '../../contexts/AuthContext';
 import DOMPurify from 'dompurify';
+// import Linkify from 'react-linkify';
 
 const PostDetail = () => {
     const { id } = useParams();
@@ -25,6 +26,11 @@ const PostDetail = () => {
         // Replace URLs in the text with anchor tags
         const urlRegex = /(https?:\/\/[^\s]+)/g;
         return content.replace(urlRegex, (url) => `<a href="${url}" target="_blank" style="color: #blue;">${url}</a>`);
+    };
+
+    const linkifyText = (text) => {
+        const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+        return text.replace(urlRegex, (url) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
     };
 
 
@@ -121,7 +127,7 @@ const PostDetail = () => {
             {post && (
                 <div className={styles.postContent}> {/* 修改这里，使用模块化样式 */}
                     <h1>{post.title}</h1>
-                    <p dangerouslySetInnerHTML={createMarkup(renderPostContent(post.content))} />
+                    <p dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(linkifyText(post.content)) }} />
                     {post.image && <img src={post.image} alt="Post" className="post-image" />}
                     {/* <p>{post.content}</p> */}
                     <div className={styles.commentsHeader}> {/* 修改这里，使用模块化样式 */}
