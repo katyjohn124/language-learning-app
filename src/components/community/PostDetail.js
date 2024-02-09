@@ -40,7 +40,7 @@ const PostDetail = () => {
         const fetchPostAndComments = async () => {
             try {
                 // Fetch post details
-                const postResponse = await fetch(`/api/community/posts/${id}`);
+                const postResponse = await fetch(` http://localhost:3001/api/community/posts/${id}`);
                 if (!postResponse.ok) {
                     throw new Error('Post not found');
                 }
@@ -48,7 +48,7 @@ const PostDetail = () => {
                 setPost(postData.post); // 修改这里，确保只设置post对象
 
                 // Fetch comments for the post
-                const commentsResponse = await fetch(`/api/community/posts/${id}/comments`);
+                const commentsResponse = await fetch(` http://localhost:3001/api/community/posts/${id}/comments`);
                 if (!commentsResponse.ok) {
                     throw new Error('Comments not found');
                 }

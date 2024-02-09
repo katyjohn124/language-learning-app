@@ -14,7 +14,7 @@ const PostList = () => {
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('/api/community/posts');
+            const response = await fetch(' http://localhost:3001/api/community/posts');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
